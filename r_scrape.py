@@ -50,6 +50,6 @@ class rScrapeLogic(object):
 
 	def check_submission(self, submittal):
 		for word in self.config['details']['keywords']:
-			if word in submittal.selftext_html:
+			if word in submittal.selftext:
 				message = '@channel We have a match - {0} - {1}'.format(word, submittal.url)
 				self.slack_it(message)
