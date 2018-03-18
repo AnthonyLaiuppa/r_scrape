@@ -16,4 +16,5 @@ _You will need to create an api on reddit to get a token, and a bot on slack to 
 Next 
 
 > pip install -r requirements.txt
+
 > python run.py
