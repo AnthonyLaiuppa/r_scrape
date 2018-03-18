@@ -1,0 +1,17 @@
+{
+ "reddit": {
+   "id": "",
+   "secret": "",
+   "user_agent": "",
+   "username": ""
+  },
+ "details": {
+   "keywords": "",
+   "subreddit": ""
+  },
+ "slack": {
+   "token": "",
+   "bot_name": "",
+   "channel": "" 
+  }
+}
