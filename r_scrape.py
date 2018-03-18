@@ -11,6 +11,7 @@ class rScrapeLogic(object):
 	def load_config(self, data):
 		self.config = json.load(open(data))
 		self.config['details']['keywords'] = [x.strip() for x in self.config['details']['keywords'].split(',')]
+		print('Loaded Config successfully')
 		return self.config
 
 	def auth_reddit(self):
@@ -21,6 +22,7 @@ class rScrapeLogic(object):
 				user_agent = self.config['reddit']['user_agent'],
 				username = self.config['reddit']['username']
 			)
+			print('Successfully authenticated to reddit api')
 			return self.reddit
 		except Exception as exc:
 			print('{0} - Unable to auth to reddit, check your creds'.format(exc))	
@@ -41,6 +43,7 @@ class rScrapeLogic(object):
 	def mon_subReddit(self):
 		for submission in self.reddit.subreddit(self.config['details']['subreddit']).stream.submissions():
 			try:
+				print('going to check a submission {0}'.format(submission.url))
 				self.check_submission(submission)
 			except Exception as exc: 
 				print('{0} - We are out of submissions waiting on more'.format(exc))
