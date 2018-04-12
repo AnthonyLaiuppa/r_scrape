@@ -2,6 +2,7 @@ from __future__ import absolute_import, unicode_literals
 from slackclient import SlackClient
 import praw
 import json 
+import io
 
 class rScrapeLogic(object):
 
@@ -9,7 +10,8 @@ class rScrapeLogic(object):
 		self.mode=mode
 
 	def load_config(self, data):
-		self.config = json.load(open(data))
+		with io.open(data, mode='r', encoding='utf8') as config:
+			self.config = json.loads(config.read())
 		self.config['details']['keywords'] = [x.strip() for x in self.config['details']['keywords'].split(',')]
 		print('Loaded Config successfully')
 		return self.config
